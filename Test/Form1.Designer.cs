@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cmbServers = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -41,15 +42,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnBrows = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -148,6 +151,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(207, 20);
             this.txtPassword.TabIndex = 6;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUserName
             // 
@@ -190,23 +194,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Text File Information";
             // 
-            // label6
-            // 
-            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.SplitButton;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Path :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(104, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(207, 20);
-            this.textBox1.TabIndex = 1;
-            // 
             // btnBrows
             // 
             this.btnBrows.Location = new System.Drawing.Point(236, 51);
@@ -216,6 +203,23 @@
             this.btnBrows.Text = "Select Path";
             this.btnBrows.UseVisualStyleBackColor = true;
             this.btnBrows.Click += new System.EventHandler(this.btnBrows_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(104, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(207, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.SplitButton;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(51, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Path :";
             // 
             // groupBox3
             // 
@@ -228,6 +232,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Project Information";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(104, 25);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(207, 20);
+            this.textBox2.TabIndex = 1;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -236,13 +247,6 @@
             this.label7.Size = new System.Drawing.Size(75, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Name Space :";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(104, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(207, 20);
-            this.textBox2.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -255,13 +259,32 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(519, 449);
+            this.btnCreate.Location = new System.Drawing.Point(395, 425);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(160, 42);
+            this.btnCreate.Size = new System.Drawing.Size(123, 26);
             this.btnCreate.TabIndex = 8;
-            this.btnCreate.Text = "Create ";
+            this.btnCreate.Text = "Create DTO";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(524, 425);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 26);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Create BL";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(653, 425);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(123, 26);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -269,12 +292,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(821, 503);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DB Code Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -311,6 +338,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

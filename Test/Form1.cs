@@ -209,7 +209,8 @@ namespace Test
                 using (StreamWriter sw = File.CreateText(fileName))
                 {
                     sw.WriteLine("// Code Genarated With CodeGen  " + Name + " created: {0}", DateTime.Now.ToString());
-                    sw.WriteLine("Using System;");
+                    sw.WriteLine("using System;");
+                    sw.WriteLine("");
                     sw.WriteLine("namespace " + textBox2.Text);
                     sw.WriteLine("{");
                     sw.WriteLine("\tpublic class " + cbTables.Text + "DTO");
@@ -243,13 +244,17 @@ namespace Test
                                 sw.WriteLine("\t\t public int  " + obj.COLUMN_NAME + " { get; set;}");
                                 sw.WriteLine("");
                                 break;
+                            default:
+                                sw.WriteLine("\t\t public enterCorrectDataType  " + obj.COLUMN_NAME + " { get; set;}");
+                                sw.WriteLine("");
+                                break;
                         }
                     }
                     sw.WriteLine("\t} ");
                     sw.WriteLine("} ");
                 }
 
-                MessageBox.Show("File Created");
+                MessageBox.Show("DTO File Created");
             }
             catch (Exception ex)
             {
@@ -413,7 +418,7 @@ namespace Test
                     sw.WriteLine("} ");
                 }
 
-                MessageBox.Show("File Created");
+                MessageBox.Show("BL File Created");
             }
             catch (Exception ex)
             {
@@ -470,7 +475,6 @@ namespace Test
             if (!textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty))
             {
                 genarateTextFiles();
-                genarateTextFilesBL();
             }
             else
             {
@@ -478,6 +482,27 @@ namespace Test
             }
         }
 
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (!textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty))
+            {
+                genarateTextFilesBL();
+
+            }
+            else
+            {
+                MessageBox.Show("Enter All Entries");
+            }
+
+        }
+
         #endregion Events
+
+
     }
 }
