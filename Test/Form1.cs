@@ -165,10 +165,13 @@ namespace Test
                         while (dr.Read())
                         {
                             TabelsDetails OtabelsDetails = new TabelsDetails();
+                            OtabelsDetails.IS_NULLABLE = false;
                             OtabelsDetails.COLUMN_NAME = dr[3].ToString();
                             OtabelsDetails.DATA_TYPE = dr[7].ToString();
-                            OtabelsDetails.IS_NULLABLE = dr[6].ToString();
-
+                            if (dr[6].ToString().Equals("YES"))
+                                OtabelsDetails.IS_NULLABLE = true;
+                            OtabelsDetails.isPrimaryKey = false;
+                            
                             coloumnsDetails.Add(OtabelsDetails);
                         }
                     }
@@ -472,13 +475,13 @@ namespace Test
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (!textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty))
+            if (!textBox1.Text.Equals(string.Empty) || !textBox2.Text.Equals(string.Empty))
             {
                 genarateTextFiles();
             }
             else
             {
-                MessageBox.Show("Enter All Entries");
+                MessageBox.Show("Enter Path and Name Space");
             }
         }
 
@@ -489,14 +492,14 @@ namespace Test
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (!textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty))
+            if (!textBox1.Text.Equals(string.Empty) || !textBox2.Text.Equals(string.Empty))
             {
                 genarateTextFilesBL();
 
             }
             else
             {
-                MessageBox.Show("Enter All Entries");
+                MessageBox.Show("Enter Path and Name Space");
             }
 
         }
