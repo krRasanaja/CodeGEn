@@ -53,10 +53,15 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbServers
@@ -91,7 +96,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmbServers);
-            this.groupBox1.Location = new System.Drawing.Point(12, 25);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(345, 224);
             this.groupBox1.TabIndex = 4;
@@ -187,7 +192,7 @@
             this.groupBox2.Controls.Add(this.btnBrows);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 255);
+            this.groupBox2.Location = new System.Drawing.Point(9, 242);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(345, 96);
             this.groupBox2.TabIndex = 5;
@@ -225,7 +230,7 @@
             // 
             this.groupBox3.Controls.Add(this.textBox2);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Location = new System.Drawing.Point(12, 357);
+            this.groupBox3.Location = new System.Drawing.Point(9, 344);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(345, 62);
             this.groupBox3.TabIndex = 6;
@@ -252,16 +257,16 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(363, 25);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(460, 394);
+            this.dataGridView1.Size = new System.Drawing.Size(442, 372);
             this.dataGridView1.TabIndex = 7;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(395, 425);
+            this.btnCreate.Location = new System.Drawing.Point(424, 412);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(123, 26);
+            this.btnCreate.Size = new System.Drawing.Size(123, 39);
             this.btnCreate.TabIndex = 8;
             this.btnCreate.Text = "Create DTO";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -269,9 +274,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(524, 425);
+            this.button1.Location = new System.Drawing.Point(553, 412);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 26);
+            this.button1.Size = new System.Drawing.Size(123, 39);
             this.button1.TabIndex = 9;
             this.button1.Text = "Create BL";
             this.button1.UseVisualStyleBackColor = true;
@@ -279,23 +284,52 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(653, 425);
+            this.button2.Location = new System.Drawing.Point(682, 412);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 26);
+            this.button2.Size = new System.Drawing.Size(123, 39);
             this.button2.TabIndex = 10;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Location = new System.Drawing.Point(12, 412);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(345, 39);
+            this.panel1.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(91, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(150, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "DB Code Gen Version 19.5.14";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Location = new System.Drawing.Point(383, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(454, 394);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Column Details";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(835, 461);
+            this.ClientSize = new System.Drawing.Size(852, 460);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -311,6 +345,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -340,6 +377,9 @@
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 

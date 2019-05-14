@@ -335,6 +335,7 @@ namespace Test
                     }
                     sw.WriteLine("");
                     sw.WriteLine("\t\t\t\t\tSqlCommand cmd = new SqlCommand(sb.ToString(), con);");
+                    sw.WriteLine("");
                     foreach (TabelsDetails obj in tableData)
                     {
                         sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text+"DTO."+obj.COLUMN_NAME+".Equals(null))");
@@ -391,6 +392,7 @@ namespace Test
                     }
                     sw.WriteLine("");
                     sw.WriteLine("\t\t\t\t\tSqlCommand cmd = new SqlCommand(sb.ToString(), con);");
+                    sw.WriteLine("");
                     foreach (TabelsDetails obj in tableData)
                     {
                         sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
