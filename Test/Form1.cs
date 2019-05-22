@@ -5,6 +5,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using Test.Models;
 
@@ -29,12 +30,26 @@ namespace Test
         }
 
         #region getInstanceInSQLServer
-
+        
         private void Form1_Load(object sender, EventArgs e)
+        {
+            foreach (string item in GlobalData.serverList)
+            {
+                cmbServers.Items.Add(item);
+            }
+            
+            cbDataBases.Text = "--Select--";
+            cbDataBases.Enabled = false;
+            cbTables.Enabled = false;
+        }
+
+        #endregion getInstanceInSQLServer
+
+        public void LoadList()
         {
             string myServer = Environment.MachineName;
 
-            List<string> serverList = new List<string>();
+
 
             DataTable servers = SqlDataSourceEnumerator.Instance.GetDataSources();
             for (int i = 0; i < servers.Rows.Count; i++)
@@ -43,54 +58,59 @@ namespace Test
                 //{
                 if ((servers.Rows[i]["InstanceName"] as string) != null)
                 {
-                    serverList.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
-                    cmbServers.Items.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
+                    GlobalData.serverList.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
+                    //cmbServers.Items.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
                 }
                 else
                 {
-                    serverList.Add(servers.Rows[i]["ServerName"].ToString());
-                    cmbServers.Items.Add(servers.Rows[i]["ServerName"]);
+                    GlobalData.serverList.Add(servers.Rows[i]["ServerName"].ToString());
+                    //cmbServers.Items.Add(servers.Rows[i]["ServerName"]);
                 }
 
                 //}
             }
-
-            cbDataBases.Text = "--Select--";
-            cbDataBases.Enabled = false;
-            cbTables.Enabled = false;
+            Thread.Sleep(5000);
         }
-
-        #endregion getInstanceInSQLServer
 
         #region dataBaseList
 
         public List<string> GetDatabaseList()
         {
             List<string> list = new List<string>();
-
-            string server = cmbServers.Text;
-            string userName = txtUserName.Text.Trim();
-            string password = txtPassword.Text;
-
-            // Open connection to the database
-            string conString = "server=" + server + ";uid=" + userName + ";pwd=" + password + ";";
-
-            using (SqlConnection con = new SqlConnection(conString))
+            try
             {
-                con.Open();
+                
 
-                // Set up a command with the given query and associate
-                // this with the current connection.
-                using (SqlCommand cmd = new SqlCommand("SELECT name from sys.databases", con))
+                string server = cmbServers.Text;
+                string userName = txtUserName.Text.Trim();
+                string password = txtPassword.Text;
+
+                // Open connection to the database
+                string conString = "server=" + server + ";uid=" + userName + ";pwd=" + password + ";";
+
+                using (SqlConnection con = new SqlConnection(conString))
                 {
-                    using (IDataReader dr = cmd.ExecuteReader())
+                    con.Open();
+
+                    // Set up a command with the given query and associate
+                    // this with the current connection.
+                    using (SqlCommand cmd = new SqlCommand("SELECT name from sys.databases", con))
                     {
-                        while (dr.Read())
+                        using (IDataReader dr = cmd.ExecuteReader())
                         {
-                            list.Add(dr[0].ToString());
+                            while (dr.Read())
+                            {
+                                list.Add(dr[0].ToString());
+                            }
                         }
                     }
                 }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
 
             return list;
@@ -171,7 +191,7 @@ namespace Test
                             if (dr[6].ToString().Equals("YES"))
                                 OtabelsDetails.IS_NULLABLE = true;
                             OtabelsDetails.isPrimaryKey = false;
-                            
+
                             coloumnsDetails.Add(OtabelsDetails);
                         }
                     }
@@ -247,6 +267,7 @@ namespace Test
                                 sw.WriteLine("\t\t public int  " + obj.COLUMN_NAME + " { get; set;}");
                                 sw.WriteLine("");
                                 break;
+
                             default:
                                 sw.WriteLine("\t\t public enterCorrectDataType  " + obj.COLUMN_NAME + " { get; set;}");
                                 sw.WriteLine("");
@@ -288,7 +309,7 @@ namespace Test
                     byte[] author = new UTF8Encoding(true).GetBytes("Kalindu Rasanjana");
                     fs.Write(author, 0, author.Length);
                 }
-                
+
                 using (StreamWriter sw = File.CreateText(fileName))
                 {
                     sw.WriteLine("// Code Genarated With CodeGen  " + Name + " created: {0}", DateTime.Now.ToString());
@@ -299,7 +320,7 @@ namespace Test
                     sw.WriteLine("");
                     sw.WriteLine("namespace " + textBox2.Text);
                     sw.WriteLine("{");
-                    sw.WriteLine("\tpublic class " + cbTables.Text+"BL");
+                    sw.WriteLine("\tpublic class " + cbTables.Text + "BL");
                     sw.WriteLine("\t{");
                     sw.WriteLine("");
                     sw.WriteLine("\t\tprivate readonly string conString;");
@@ -315,7 +336,6 @@ namespace Test
                     sw.WriteLine("\t\t\ttry");
                     sw.WriteLine("\t\t\t{");
 
-                    
                     sw.WriteLine("\t\t\t\tusing (SqlConnection con = new SqlConnection(conString))");
                     sw.WriteLine("\t\t\t\t{");
                     sw.WriteLine("\t\t\t\t\tStringBuilder sb = new StringBuilder();");
@@ -323,14 +343,13 @@ namespace Test
                     sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\"Insert Into " + cbTables.Text + " Values( \");");
                     for (int i = 0; i < tableData.Count; i++)
                     {
-                        if(i != tableData.Count-1)
+                        if (i != tableData.Count - 1)
                         {
                             sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\" @" + tableData[i].COLUMN_NAME + ", \");");
                         }
                         else
                         {
                             sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\" @" + tableData[i].COLUMN_NAME + " )\");");
-
                         }
                     }
                     sw.WriteLine("");
@@ -338,8 +357,8 @@ namespace Test
                     sw.WriteLine("");
                     foreach (TabelsDetails obj in tableData)
                     {
-                        sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text+"DTO."+obj.COLUMN_NAME+".Equals(null))");
-                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME+"\", DBNull.Value);");
+                        sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
+                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", DBNull.Value);");
 
                         sw.WriteLine("\t\t\t\t\telse");
                         sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", " + cbTables.Text + "DTO." + obj.COLUMN_NAME + ");");
@@ -372,22 +391,20 @@ namespace Test
                     sw.WriteLine("\t\t\ttry");
                     sw.WriteLine("\t\t\t{");
 
-
                     sw.WriteLine("\t\t\t\tusing (SqlConnection con = new SqlConnection(conString))");
                     sw.WriteLine("\t\t\t\t{");
                     sw.WriteLine("\t\t\t\t\tStringBuilder sb = new StringBuilder();");
                     sw.WriteLine("");
-                    sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\"UPDATE "+cbTables.Text+" set \");");
+                    sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\"UPDATE " + cbTables.Text + " set \");");
                     for (int i = 0; i < tableData.Count; i++)
                     {
                         if (i != tableData.Count - 1)
                         {
-                            sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\" " + tableData[i].COLUMN_NAME + " = @"+ tableData[i].COLUMN_NAME + " , \");");
+                            sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\" " + tableData[i].COLUMN_NAME + " = @" + tableData[i].COLUMN_NAME + " , \");");
                         }
                         else
                         {
                             sw.WriteLine("\t\t\t\t\tsb.AppendLine = (\" " + tableData[i].COLUMN_NAME + " = @" + tableData[i].COLUMN_NAME + "  \");");
-
                         }
                     }
                     sw.WriteLine("");
@@ -489,7 +506,6 @@ namespace Test
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -497,13 +513,16 @@ namespace Test
             if (!textBox1.Text.Equals(string.Empty) || !textBox2.Text.Equals(string.Empty))
             {
                 genarateTextFilesBL();
-
             }
             else
             {
                 MessageBox.Show("Enter Path and Name Space");
             }
-
+        }
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
 
         #endregion Events
