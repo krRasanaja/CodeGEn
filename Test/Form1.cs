@@ -186,11 +186,21 @@ namespace Test
                         {
                             TabelsDetails OtabelsDetails = new TabelsDetails();
                             OtabelsDetails.IS_NULLABLE = false;
+
                             OtabelsDetails.COLUMN_NAME = dr[3].ToString();
                             OtabelsDetails.DATA_TYPE = dr[7].ToString();
                             if (dr[6].ToString().Equals("YES"))
                                 OtabelsDetails.IS_NULLABLE = true;
                             OtabelsDetails.isPrimaryKey = false;
+
+                            if (cbSelect.Checked == true)
+                                OtabelsDetails.isSelect = false;
+
+                            if (cbDelete.Checked == true)
+                                OtabelsDetails.isDelete = false;
+
+                            if (cbUpdate.Checked == true)
+                                OtabelsDetails.isUpdate = false;
 
                             coloumnsDetails.Add(OtabelsDetails);
                         }
@@ -357,15 +367,15 @@ namespace Test
                     sw.WriteLine("");
                     foreach (TabelsDetails obj in tableData)
                     {
-                        sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
+                        sw.WriteLine("\t\t\t\t\tif (o" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
                         sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", DBNull.Value);");
 
                         sw.WriteLine("\t\t\t\t\telse");
-                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", " + cbTables.Text + "DTO." + obj.COLUMN_NAME + ");");
+                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", o" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ");");
                         sw.WriteLine("");
                     }
                     sw.WriteLine("");
-                    sw.WriteLine("\t\t\t\t\tcon.open();");
+                    sw.WriteLine("\t\t\t\t\tcon.Open();");
                     sw.WriteLine("\t\t\t\t\tcmd.ExecuteNonQuery();");
                     sw.WriteLine("\t\t\t\t}");
                     sw.WriteLine("\t\t\t}");
@@ -412,15 +422,15 @@ namespace Test
                     sw.WriteLine("");
                     foreach (TabelsDetails obj in tableData)
                     {
-                        sw.WriteLine("\t\t\t\t\tif (" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
+                        sw.WriteLine("\t\t\t\t\tif (o" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ".Equals(null))");
                         sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", DBNull.Value);");
 
                         sw.WriteLine("\t\t\t\t\telse");
-                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", " + cbTables.Text + "DTO." + obj.COLUMN_NAME + ");");
+                        sw.WriteLine("\t\t\t\t\t\tcmd.Parameters.AddWithValue(\"" + obj.COLUMN_NAME + "\", o" + cbTables.Text + "DTO." + obj.COLUMN_NAME + ");");
                         sw.WriteLine("");
                     }
                     sw.WriteLine("");
-                    sw.WriteLine("\t\t\t\t\tcon.open();");
+                    sw.WriteLine("\t\t\t\t\tcon.Open();");
                     sw.WriteLine("\t\t\t\t\tcmd.ExecuteNonQuery();");
                     sw.WriteLine("\t\t\t\t}");
                     sw.WriteLine("\t\t\t}");
@@ -523,6 +533,21 @@ namespace Test
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void cbSelect_CheckedChanged(object sender, EventArgs e)
+        {
+            getColumnDetails();
+        }
+
+        private void cbUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            getColumnDetails();
+        }
+
+        private void cbDelete_CheckedChanged(object sender, EventArgs e)
+        {
+            getColumnDetails();
         }
 
         #endregion Events

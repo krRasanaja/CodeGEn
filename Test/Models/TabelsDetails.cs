@@ -15,5 +15,14 @@ namespace Test.Models
 
         [DisplayName("Is PrimaryKey")]
         public bool isPrimaryKey { get; set; }
+
+        [DisplayName("Select")]
+        public bool isSelect { get; set; }
+
+        [DisplayName("Update")]
+        public bool isUpdate { get; set; }
+
+        [DisplayName("Delete")]
+        public bool isDelete { get; set; }
     }
 }

@@ -56,12 +56,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbSelect = new System.Windows.Forms.CheckBox();
+            this.cbUpdate = new System.Windows.Forms.CheckBox();
+            this.cbDelete = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbServers
@@ -264,7 +269,7 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(424, 412);
+            this.btnCreate.Location = new System.Drawing.Point(417, 469);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(123, 39);
             this.btnCreate.TabIndex = 8;
@@ -274,7 +279,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(553, 412);
+            this.button1.Location = new System.Drawing.Point(546, 469);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 39);
             this.button1.TabIndex = 9;
@@ -284,7 +289,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(682, 412);
+            this.button2.Location = new System.Drawing.Point(675, 469);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 39);
             this.button2.TabIndex = 10;
@@ -296,7 +301,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(12, 412);
+            this.panel1.Location = new System.Drawing.Point(9, 467);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(345, 39);
             this.panel1.TabIndex = 11;
@@ -320,12 +325,58 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Column Details";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cbDelete);
+            this.groupBox5.Controls.Add(this.cbUpdate);
+            this.groupBox5.Controls.Add(this.cbSelect);
+            this.groupBox5.Location = new System.Drawing.Point(9, 412);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(345, 49);
+            this.groupBox5.TabIndex = 17;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "BL Options ";
+            // 
+            // cbSelect
+            // 
+            this.cbSelect.AutoSize = true;
+            this.cbSelect.Location = new System.Drawing.Point(14, 19);
+            this.cbSelect.Name = "cbSelect";
+            this.cbSelect.Size = new System.Drawing.Size(56, 17);
+            this.cbSelect.TabIndex = 0;
+            this.cbSelect.Text = "Select";
+            this.cbSelect.UseVisualStyleBackColor = true;
+            this.cbSelect.CheckedChanged += new System.EventHandler(this.cbSelect_CheckedChanged);
+            // 
+            // cbUpdate
+            // 
+            this.cbUpdate.AutoSize = true;
+            this.cbUpdate.Location = new System.Drawing.Point(125, 19);
+            this.cbUpdate.Name = "cbUpdate";
+            this.cbUpdate.Size = new System.Drawing.Size(61, 17);
+            this.cbUpdate.TabIndex = 1;
+            this.cbUpdate.Text = "Update";
+            this.cbUpdate.UseVisualStyleBackColor = true;
+            this.cbUpdate.CheckedChanged += new System.EventHandler(this.cbUpdate_CheckedChanged);
+            // 
+            // cbDelete
+            // 
+            this.cbDelete.AutoSize = true;
+            this.cbDelete.Location = new System.Drawing.Point(246, 19);
+            this.cbDelete.Name = "cbDelete";
+            this.cbDelete.Size = new System.Drawing.Size(57, 17);
+            this.cbDelete.TabIndex = 2;
+            this.cbDelete.Text = "Delete";
+            this.cbDelete.UseVisualStyleBackColor = true;
+            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(852, 460);
+            this.ClientSize = new System.Drawing.Size(852, 525);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
@@ -349,6 +400,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -381,6 +434,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox cbDelete;
+        private System.Windows.Forms.CheckBox cbUpdate;
+        private System.Windows.Forms.CheckBox cbSelect;
     }
 }
 

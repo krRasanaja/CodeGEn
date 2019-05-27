@@ -32,9 +32,7 @@ namespace Test
             timer1.Interval = 100;
             timer1.Start();
         }
-
-
-
+        
         public void LoadList()
         {
             string myServer = Environment.MachineName;
@@ -44,20 +42,16 @@ namespace Test
             DataTable servers = SqlDataSourceEnumerator.Instance.GetDataSources();
             for (int i = 0; i < servers.Rows.Count; i++)
             {
-                //{
-                //{
                 if ((servers.Rows[i]["InstanceName"] as string) != null)
                 {
                     GlobalData.serverList.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
-                    //cmbServers.Items.Add(servers.Rows[i]["ServerName"] + "\\" + servers.Rows[i]["InstanceName"]);
+                    
                 }
                 else
                 {
                     GlobalData.serverList.Add(servers.Rows[i]["ServerName"].ToString());
-                    //cmbServers.Items.Add(servers.Rows[i]["ServerName"]);
+                    
                 }
-
-                //}
             }
             Thread.Sleep(5000);
         }
@@ -85,14 +79,10 @@ namespace Test
             progressBar1.Visible = false;
             Form1 form1 = new Form1();
             form1.ShowDialog();
-
             
-
             workerThread = null;
-
             
         }
-
         
     }
 }
