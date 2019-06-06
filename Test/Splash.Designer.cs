@@ -34,8 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.bunifuProgressBar1 = new Bunifu.Framework.UI.BunifuProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,19 +71,24 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBar1
+            // bunifuProgressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(252, 154);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(168, 23);
-            this.progressBar1.TabIndex = 4;
+            this.bunifuProgressBar1.BackColor = System.Drawing.Color.Silver;
+            this.bunifuProgressBar1.BorderRadius = 5;
+            this.bunifuProgressBar1.Location = new System.Drawing.Point(252, 147);
+            this.bunifuProgressBar1.MaximumValue = 100;
+            this.bunifuProgressBar1.Name = "bunifuProgressBar1";
+            this.bunifuProgressBar1.ProgressColor = System.Drawing.Color.Teal;
+            this.bunifuProgressBar1.Size = new System.Drawing.Size(168, 10);
+            this.bunifuProgressBar1.TabIndex = 5;
+            this.bunifuProgressBar1.Value = 0;
             // 
             // Splash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 235);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.bunifuProgressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -104,7 +109,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer2;
+        private Bunifu.Framework.UI.BunifuProgressBar bunifuProgressBar1;
     }
 }

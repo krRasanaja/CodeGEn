@@ -57,9 +57,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cbSelect = new System.Windows.Forms.CheckBox();
-            this.cbUpdate = new System.Windows.Forms.CheckBox();
             this.cbDelete = new System.Windows.Forms.CheckBox();
+            this.cbUpdate = new System.Windows.Forms.CheckBox();
+            this.cbSelect = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -337,16 +337,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "BL Options ";
             // 
-            // cbSelect
+            // cbDelete
             // 
-            this.cbSelect.AutoSize = true;
-            this.cbSelect.Location = new System.Drawing.Point(14, 19);
-            this.cbSelect.Name = "cbSelect";
-            this.cbSelect.Size = new System.Drawing.Size(56, 17);
-            this.cbSelect.TabIndex = 0;
-            this.cbSelect.Text = "Select";
-            this.cbSelect.UseVisualStyleBackColor = true;
-            this.cbSelect.CheckedChanged += new System.EventHandler(this.cbSelect_CheckedChanged);
+            this.cbDelete.AutoSize = true;
+            this.cbDelete.Location = new System.Drawing.Point(246, 19);
+            this.cbDelete.Name = "cbDelete";
+            this.cbDelete.Size = new System.Drawing.Size(57, 17);
+            this.cbDelete.TabIndex = 2;
+            this.cbDelete.Text = "Delete";
+            this.cbDelete.UseVisualStyleBackColor = true;
+            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
             // 
             // cbUpdate
             // 
@@ -359,16 +359,16 @@
             this.cbUpdate.UseVisualStyleBackColor = true;
             this.cbUpdate.CheckedChanged += new System.EventHandler(this.cbUpdate_CheckedChanged);
             // 
-            // cbDelete
+            // cbSelect
             // 
-            this.cbDelete.AutoSize = true;
-            this.cbDelete.Location = new System.Drawing.Point(246, 19);
-            this.cbDelete.Name = "cbDelete";
-            this.cbDelete.Size = new System.Drawing.Size(57, 17);
-            this.cbDelete.TabIndex = 2;
-            this.cbDelete.Text = "Delete";
-            this.cbDelete.UseVisualStyleBackColor = true;
-            this.cbDelete.CheckedChanged += new System.EventHandler(this.cbDelete_CheckedChanged);
+            this.cbSelect.AutoSize = true;
+            this.cbSelect.Location = new System.Drawing.Point(14, 19);
+            this.cbSelect.Name = "cbSelect";
+            this.cbSelect.Size = new System.Drawing.Size(56, 17);
+            this.cbSelect.TabIndex = 0;
+            this.cbSelect.Text = "Select";
+            this.cbSelect.UseVisualStyleBackColor = true;
+            this.cbSelect.CheckedChanged += new System.EventHandler(this.cbSelect_CheckedChanged);
             // 
             // Form1
             // 

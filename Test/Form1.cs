@@ -41,6 +41,8 @@ namespace Test
             cbDataBases.Text = "--Select--";
             cbDataBases.Enabled = false;
             cbTables.Enabled = false;
+
+
         }
 
         #endregion getInstanceInSQLServer

@@ -14,6 +14,7 @@ namespace Test
 {
     public partial class Splash : Form
     {
+        int count = 1;
         public Splash()
         {
             InitializeComponent();
@@ -24,9 +25,6 @@ namespace Test
 
         private void Splash_Load(object sender, EventArgs e)
         {
-            progressBar1.Visible = true;
-            progressBar1.Style = ProgressBarStyle.Marquee;
-
             workerThread = new Thread(LoadList);
             workerThread.Start();
             timer1.Interval = 100;
@@ -67,16 +65,19 @@ namespace Test
             }
 
             if (workerThread.IsAlive)
+            {
+                
+                bunifuProgressBar1.Value = count;
+
+                count++;
+
                 return;
-            
-            
-            
-            
+            }
+                
             timer1.Stop();
 
             this.Hide();
-
-            progressBar1.Visible = false;
+            
             Form1 form1 = new Form1();
             form1.ShowDialog();
             
